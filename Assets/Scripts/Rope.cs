@@ -8,9 +8,9 @@ public class Rope : MonoBehaviour {
     private float mNodeLength;
 
 
-    public Rigidbody Anchor { get { return mAnchor; } }
+    public Rigidbody2D Anchor { get { return mAnchor; } }
     [SerializeField]
-    private Rigidbody mAnchor;
+    private Rigidbody2D mAnchor;
 
     public Transform CursorPlane { get { return mCursorPlane; } }
     [SerializeField]
@@ -43,10 +43,10 @@ public class Rope : MonoBehaviour {
 	        return;
 	    }
 
-	    var pos = mAnchor.position + Vector3.down * (mNodeLength / 2);
+	    var pos = mAnchor.position + Vector2.down * (mNodeLength / 2);
 	    mHeadNode = Instantiate(mHeadNodePrefab, pos, Quaternion.identity, transform).GetComponent<Node>();
 	    mHeadNode.Init(mAnchor);
-	    pos += Vector3.down * mNodeLength;
+	    pos += Vector2.down * mNodeLength;
 
 	    var lastNode = mHeadNode;
 	    for (int i = 0; i < NodeCount; i++)
@@ -54,7 +54,7 @@ public class Rope : MonoBehaviour {
 	        var node = Instantiate(mNodePrefab, pos, Quaternion.identity, transform).GetComponent<Node>();
 	        node.Init(lastNode);
 	        lastNode = node;
-	        pos += Vector3.down * mNodeLength;
+	        pos += Vector2.down * mNodeLength;
         }
 
 	    var end = Instantiate(mEndPrefab, pos, Quaternion.identity, transform).GetComponent<Node>();
@@ -98,6 +98,6 @@ public class Rope : MonoBehaviour {
             }
 
         }
-        mHeadNode.HingeJoint.anchor = -Vector3.up * (mOffset * -0.3f - 0.3f);
+        mHeadNode.HingeJoint.anchor = -Vector2.up * (mOffset * -0.3f - 0.3f);
     }
 }

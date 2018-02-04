@@ -7,15 +7,15 @@ public class Node : MonoBehaviour {
     [HideInInspector]
     public Node NextNode;
 
-    public HingeJoint HingeJoint { get { return mHingeJoint; } }
+    public HingeJoint2D HingeJoint { get { return mHingeJoint; } }
     [SerializeField]
-    private HingeJoint mHingeJoint;
+    private HingeJoint2D mHingeJoint;
 
-    public Rigidbody Rigidbody { get { return mRigidBody; } }
+    public Rigidbody2D Rigidbody { get { return mRigidBody; } }
     [SerializeField]
-    private Rigidbody mRigidBody;
+    private Rigidbody2D mRigidBody;
 
-    public void Init(Rigidbody attachTo)
+    public void Init(Rigidbody2D attachTo)
     {
         mHingeJoint.connectedBody = attachTo;
     }

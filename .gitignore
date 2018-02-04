@@ -3,3 +3,4 @@ obj/*
 Library/*
 Builds/*
 .vs/*
+Deploy.bat
